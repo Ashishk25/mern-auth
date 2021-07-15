@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const authRouter = require('./routes/auth');
+const path = require('path');
 require('dotenv').config();
 const cors = require('cors');
 const bodyParser = require('body-parser');
@@ -26,4 +27,7 @@ app.use('/api', authRouter);
 
 if(process.env.NODE_ENV =="production"){
     app.use(express.static('client/build'));
+    app.get("*", (req,res)=>{
+        res.sendFile(path.resolve(_dirname, 'client', 'build', 'index,html'));
+    })
 }
