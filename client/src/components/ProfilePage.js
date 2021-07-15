@@ -15,7 +15,7 @@ class ProfilePage extends Component{
     saveUser = userdata => {
         axios({
             method: "POST",
-            url: "https://mern-auth1712.herokuapp.com/api/googlelogin",
+            url: "http://localhost:5000/api/googlelogin",
             data: { data: userdata },
         }).then(response => {
             console.log("user verified and saved");
